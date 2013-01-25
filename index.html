@@ -26,6 +26,15 @@
 	<!-- Required Modernizr file -->
 	<script src="js/modernizr.custom.js"></script>	
 	<style>canvas { width: 100%; height: 100% }</style> 
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {inlineMath: [['$','$'], ['\\(', '\\)']]},
+		processEscape: true,
+		TeX: { equationNumbers: { autoNumber: "AMS"}}
+	});
+	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
 </head> 
 <body class="deck-container">
 	<script src="js/three.js"></script> 
@@ -41,6 +50,11 @@
 	<li>
 		<h3>Choose Themes</h3>
 		<p>One for slide styles and one for deck transitions.</p>
+		<p> suppose that $\hat{\mathbb{C}} := {\mathbb{C}} \cup \{ \infty \}$ is the extended complex plane  \( A \perp  -\infty \) </p>
+\begin{equation}
+	E = mc^2
+\end{equation}
+
 	</li>
 </ol>
 </section>
