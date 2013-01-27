@@ -7,13 +7,14 @@ renderer = null
 container = null
 cube = null
 stats = null
+sceneWidth = window.innerWidth/2
+sceneHeight = window.innerHeight/2
 
 app_init = -> 	
 	container = $('#first')[0]
 	$('#first').mousemove (ev) ->
-		camera.position.x += ev.clientX - window.innerWidth/2
-		camera.position.y += ev.clientY - window.innerHeight/2
-		camera.lookAt(scene.position)
+		cube.rotation.y += 0.01*(ev.clientX - sceneWidth)/sceneWidth
+		cube.rotation.x += 0.01*(ev.clientY - sceneHeight)/sceneHeight
 
 	scene = new THREE.Scene
 	camera = new THREE.PerspectiveCamera 75, window.innerWidth/window.innerHeight, 0.1, 1000
@@ -22,7 +23,29 @@ app_init = ->
 
 	container.appendChild renderer.domElement
 
-	geometry = new THREE.CubeGeometry 1,1,1
+	#--- Grid --- #
+	
+	size = 500
+	step = 100
+	grid = new THREE.Geometry
+
+	for i in [-size..size] by step
+		grid.vertices.push new THREE.Vector3 -size, 0, i
+		grid.vertices.push new THREE.Vector3 size, 0, i
+		grid.vertices.push new THREE.Vector3 i, 0, -size
+		grid.vertices.push new THREE.Vector3 i, 0, size
+	
+	grid.computeBoundingSphere()
+
+	grid_material = new THREE.LineBasicMaterial {color:0xffffff, opacity:0.2}
+	line = new THREE.Line grid, grid_material
+	line.type = THREE.LinePieces;
+	scene.add line
+
+	###
+	Geometry
+	###
+	geometry = new THREE.CubeGeometry 10,10,10
 	material = new THREE.MeshBasicMaterial {color: 0xff0000}
 	cube = new THREE.Mesh geometry, material
 	stats = new Stats
@@ -31,8 +54,9 @@ app_init = ->
 	container.appendChild stats.domElement
 
 	scene.add cube
-	camera.position.z = 5
-
+	camera.position.z = 30
+	camera.position.y = 20
+	camera.lookAt(scene.position)
 	
 
 ###
