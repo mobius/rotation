@@ -42,26 +42,34 @@
 <body class="deck-container">
 
 <section class="slide">
-	<h1> Hello </h1>
+	<h1> Rotation </h1>
 </section>
 
 <section class="slide">
-<h2>How to Make a Deck</h2>
+<h2>Rotation in ${\mathbb{R(1)}}$</h2>
 <ol>
 	<li>
-		<h3>Write Slides</h3>
-		<p>Slide content is a simple HTML.</p>
+		<h3>Operator $*$</h3>				
+		<h3>Operand $-1$</h3>		
 	</li>
 	<li>
-		<h3>Choose Themes</h3>
-		<p>One for slide styles and one for deck transitions.</p>
-		<p> suppose that $\hat{\mathbb{C}} := {\mathbb{C}} \cup \{ \infty \}$ is the extended complex plane  \( A \perp  -\infty \) </p>
-\begin{equation}
-	E = mc^2
-\end{equation}
+		<h3>Every number will be rotate to it's opposite</h3>
+		\begin{equation}
+			5*(-1) = -5
+		\end{equation}		
+		\begin{equation}
+			E = mc^2
+		\end{equation}
 	</li>	
 </ol>
-
+<section class="slide">
+<h2>Rotation in ${\mathbb{R(2)}}$</h2>
+<ol>
+	<li>
+		<h3>Operator $*$</h3>
+		<h3>Operand Complex Number</h3>
+	</li>
+</section>
 </section>
 <section class="slide">
 	<div id="first"/>
@@ -137,17 +145,14 @@
 <script src="extensions/navigation/deck.navigation.js"></script>
 <script src="extensions/scale/deck.scale.js"></script>
 
-<script src="lib/main.js"></script> 
-
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
 	$(function() {
-		$.deck('.slide');
-
-		app_init()
-		app_render();
+		$.deck('.slide');		
 	});
 </script>
+
+<script src="lib/main.js"></script> 
 
 </body> 
 

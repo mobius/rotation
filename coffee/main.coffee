@@ -26,7 +26,7 @@ app_init = ->
 	#--- Grid --- #
 	
 	size = 500
-	step = 100
+	step = 20
 	grid = new THREE.Geometry
 
 	for i in [-size..size] by step
@@ -35,8 +35,6 @@ app_init = ->
 		grid.vertices.push new THREE.Vector3 i, 0, -size
 		grid.vertices.push new THREE.Vector3 i, 0, size
 	
-	grid.computeBoundingSphere()
-
 	grid_material = new THREE.LineBasicMaterial {color:0xffffff, opacity:0.2}
 	line = new THREE.Line grid, grid_material
 	line.type = THREE.LinePieces;
@@ -53,9 +51,12 @@ app_init = ->
 	stats.domElement.style.top = '0px'
 	container.appendChild stats.domElement
 
-	scene.add cube
-	camera.position.z = 30
-	camera.position.y = 20
+	#scene.add cube
+
+	axis = new THREE.AxisHelper 10, 10, 10
+	scene.add axis
+
+	camera.position = new THREE.Vector3 10, 20, 30
 	camera.lookAt(scene.position)
 	
 
@@ -70,3 +71,6 @@ app_render = ->
 	
 
 
+$(document).bind 'ready', ->
+	app_init()
+	app_render()
